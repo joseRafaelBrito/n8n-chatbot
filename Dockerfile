@@ -1,7 +1,7 @@
 # Use the official n8n image
 FROM n8nio/n8n:latest
 
-# Set default environment variables for Render
+# Set default environment variables for Fly.io
 ENV N8N_HOST=0.0.0.0
 ENV N8N_PORT=5678
 ENV GENERIC_TIMEZONE=America/Santo_Domingo
