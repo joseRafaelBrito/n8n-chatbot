@@ -1,15 +1,21 @@
 app = "n8n-chatbot"
-primary_region = "dfw" # choose nearest region (e.g., mia, iad, gru, sjc)
+primary_region = "dfw"  # Dallas, Texas (US)
 
 [build]
   dockerfile = "Dockerfile"
+
+[env]
+  N8N_HOST = "www.joseestevezai.com"
+  N8N_PORT = 443
+  N8N_PROTOCOL = "https"
+  WEBHOOK_URL = "https://www.joseestevezai.com/"
 
 [http_service]
   internal_port = 5678
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
-  min_machines_running = 0
+  min_machines_running = 1
   processes = ["app"]
 
 [[vm]]
