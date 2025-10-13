@@ -1,0 +1,12 @@
+# Ignore local development files
+n8n_data/
+node_modules/
+.git
+.gitignore
+.env
+.env.*
+.DS_Store
+*.log
+*.tmp
+*.temp
+fly.toml
