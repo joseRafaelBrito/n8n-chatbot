@@ -1,5 +1,5 @@
 app = "n8n-chatbot-6ixegw"
-primary_region = "dfw"  # Dallas, Texas (US)
+primary_region = "dfw"
 
 [build]
   image = "n8nio/n8n:latest"
@@ -15,8 +15,8 @@ primary_region = "dfw"  # Dallas, Texas (US)
   WEBHOOK_URL = "https://n8n-chatbot-6ixegw.fly.dev/webhook/e8380a2c-fc3c-4f82-9cab-3598f0ded2b1/chat"
 
 [[services]]
+  protocol = "tcp"
   internal_port = 5678
-  protocol = "http"
 
   [[services.ports]]
     port = 80
