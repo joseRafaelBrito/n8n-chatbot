@@ -1,24 +1,25 @@
-app = "n8n-chatbot"
+app = "n8n-chatbot-6ixegw"
 primary_region = "dfw"  # Dallas, Texas (US)
 
 [build]
-  dockerfile = "Dockerfile"
+  image = "n8nio/n8n:latest"
 
 [env]
-  N8N_HOST = "n8n-chatbot-6ixegw.fly.dev"
-  N8N_PORT = 443
-  N8N_PROTOCOL = "https"
+  N8N_BASIC_AUTH_ACTIVE = "true"
+  N8N_BASIC_AUTH_USER = "admin"
+  N8N_BASIC_AUTH_PASSWORD = "changeme"
+  N8N_ENCRYPTION_KEY = "G7k8!r9Xq#2LpTz6u4MvH0bF1S9WcYdQ"
+  N8N_HOST = "0.0.0.0"
+  N8N_PORT = "5678"
+  GENERIC_TIMEZONE = "America/Santo_Domingo"
   WEBHOOK_URL = "https://n8n-chatbot-6ixegw.fly.dev/webhook/e8380a2c-fc3c-4f82-9cab-3598f0ded2b1/chat"
 
-[http_service]
+[[services]]
   internal_port = 5678
-  force_https = true
-  auto_stop_machines = true
-  auto_start_machines = true
-  min_machines_running = 1
-  processes = ["app"]
+  protocol = "tcp"
 
-[[vm]]
-  memory = "1gb"
-  cpu_kind = "shared"
-  cpus = 1
+  [[services.ports]]
+    port = 80
+
+  [[services.ports]]
+    port = 443
