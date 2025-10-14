@@ -16,10 +16,12 @@ primary_region = "dfw"  # Dallas, Texas (US)
 
 [[services]]
   internal_port = 5678
-  protocol = "tcp"
+  protocol = "http"
 
   [[services.ports]]
     port = 80
+    handlers = ["http"]
 
   [[services.ports]]
     port = 443
+    handlers = ["tls", "http"]
