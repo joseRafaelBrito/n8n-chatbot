@@ -5,10 +5,10 @@ primary_region = "dfw"  # Dallas, Texas (US)
   dockerfile = "Dockerfile"
 
 [env]
-  N8N_HOST = "www.joseestevezai.com"
+  N8N_HOST = "n8n-chatbot-6ixegw.fly.dev"
   N8N_PORT = 443
   N8N_PROTOCOL = "https"
-  WEBHOOK_URL = "https://www.joseestevezai.com/"
+  WEBHOOK_URL = "https://n8n-chatbot-6ixegw.fly.dev/webhook/e8380a2c-fc3c-4f82-9cab-3598f0ded2b1/chat"
 
 [http_service]
   internal_port = 5678
