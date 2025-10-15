@@ -5,7 +5,6 @@ primary_region = "dfw"
   image = "n8nio/n8n:latest"
 
 [env]
-  N8N_SECURE_COOKIE = "false"
   N8N_BASIC_AUTH_ACTIVE = "true"
   N8N_BASIC_AUTH_USER = "admin"
   N8N_BASIC_AUTH_PASSWORD = "changeme"
@@ -15,14 +14,16 @@ primary_region = "dfw"
   GENERIC_TIMEZONE = "America/Santo_Domingo"
   WEBHOOK_URL = "https://n8n-chatbot-6ixegw.fly.dev/webhook/e8380a2c-fc3c-4f82-9cab-3598f0ded2b1/chat"
 
+[mounts]
+  source = "n8n_data"
+  destination = "/home/node/.n8n"
+
 [[services]]
-  protocol = "tcp"
   internal_port = 5678
+  protocol = "tcp"
 
   [[services.ports]]
     port = 80
-    handlers = ["http"]
 
   [[services.ports]]
     port = 443
-    handlers = ["tls", "http"]
