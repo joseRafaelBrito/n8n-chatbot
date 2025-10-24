@@ -1,0 +1,59 @@
+# Render.com deployment configuration for n8n chatbot
+# This file defines how to deploy the n8n service to Render's platform
+
+services:
+  # Main n8n service configuration
+  - type: web
+    name: n8n-chatbot
+    env: docker
+    dockerfilePath: ./Dockerfile
+
+    # Service configuration
+    plan: free
+    region: oregon
+    branch: main
+
+    # Port and health check configuration
+    port: 5678
+    healthCheckPath: /healthz
+
+    # Environment variables for n8n configuration
+    envVars:
+      # n8n server configuration
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: N8N_PORT
+        value: 5678
+
+      # Timezone configuration
+      - key: GENERIC_TIMEZONE
+        value: America/Santo_Domingo
+
+      # Webhook URL for external integrations
+      - key: WEBHOOK_URL
+        value: https://n8n-chatbot.onrender.com/
+
+      # Auto-generated encryption key for n8n data security
+      # Render will automatically generate a secure key
+      - key: N8N_ENCRYPTION_KEY
+        generateValue: true
+
+    # Persistent disk for n8n data storage
+    # This ensures workflows and credentials persist across deployments
+    disk:
+      name: n8n_data
+      mountPath: /home/node/.n8n
+      sizeGB: 1
+
+    # Build and deployment settings
+    buildCommand: ""
+    startCommand: ""
+
+    # Auto-deploy settings
+    autoDeploy: true
+
+    # Resource limits for free plan
+    # Note: Free plan has limited resources, consider upgrading for production use
+    scaling:
+      minInstances: 1
+      maxInstances: 1
