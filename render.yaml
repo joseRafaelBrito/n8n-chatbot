@@ -38,6 +38,20 @@ services:
       - key: N8N_ENCRYPTION_KEY
         generateValue: true
 
+      # Additional n8n configuration for production
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: true
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        generateValue: true
+
+      # Database configuration (using SQLite for simplicity)
+      - key: DB_TYPE
+        value: sqlite
+      - key: DB_SQLITE_DATABASE
+        value: /home/node/.n8n/database.sqlite
+
     # Persistent disk for n8n data storage
     # This ensures workflows and credentials persist across deployments
     disk:
